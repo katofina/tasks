@@ -32,10 +32,15 @@ class Stack {
     pop() {
         return this.stack.pop();
     }
-    get length() {
-        return this.stack.length;
+    isEmpty() {
+        if (!this.stack.length) {return false}
+        else return true;
     }
-};
+    peek() {
+        if (!this.stack.length) {return null}
+        else return this.stack.at(-1);
+    }
+};//Добавление элемента в стек, изъятие из стека, получение верхнего элемента без егоудаления, проверка на пустоту.
 
 class Queue {
     constructor() {
@@ -47,10 +52,15 @@ class Queue {
     delqueue() {
         return this.queue.shift();
     }
-    get length() {
-        return this.queue.length;
+    peek() {
+        if(!this.queue.length) {return null}
+        else return this.queue[0];
     }
-};
+    isEmpty() {
+        if (!this.queue.length) {return false}
+        else return true;
+    }
+};//Вставка элемент в конец очереди, удаление элемента из начала очереди, получение первого элемента очереди без его удаления, проверка на пустоту очереди.
 
 function likeBind(cntxt, ...args) {
     const th = this;
