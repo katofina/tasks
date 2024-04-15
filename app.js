@@ -1,14 +1,31 @@
+import { cloneDeep } from "lodash";
+
 const counter1 = {};
 const counter2 = new Object();
 const counter3 = Object.create({}, {p: {value:4, writable: true, enumerable:true, configurable: true}}); // можно указать прототип
 const obj = {p: 1,};
 const counter4 = Object.assign({}, obj);
+function User(name) {
+    this.name = name;
+}
+const user = new User("Jack");//добавила с помощью функции-конструктора и класса
+class User2 {
+    constructor(name) {
+        this.name = name;
+        this.counter = 0;
+    }
+    counter() {
+        this.counter++;
+    }
+}
+const user2 = new User2;
 
 const copyCounter1 = counter1; //копия ссылки
 const copyCounter2 = Object.assign({}, counter1); //поверхностное копирование
 const copyCounter3 = {...counter3}; //поверхностное копирование
 const copyCounter4 = JSON.parse(JSON.stringify(counter3)); //есть проблемы с undefined, function, symbol
 const copyCounter5 = structuredClone(counter4); //глубокое копирование
+const copyCounter6 = cloneDeep(user); // добавила с помощью библиотеки lodash
 
 function makeCounter1() {};
 const makeCounter2 = function() {}; // Можно дать имя функции, можно присвоить стрелочную функцию.
