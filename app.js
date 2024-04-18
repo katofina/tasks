@@ -54,8 +54,8 @@ function fetchUrl(url) {
     .then((response) => response.json())
     .catch((err) => {
         if (trying < 5) {
-            fetchUrl(url);
             ++trying;
+            fetchUrl(url);
         } else alert(err); //После 5 попыток выведет ошибку
     });
 };
